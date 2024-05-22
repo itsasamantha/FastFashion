@@ -1,0 +1,96 @@
+.container {  display: grid;
+    grid-template-columns: 39% 1.2fr;
+    grid-template-rows: 0.2fr 1.8fr 0.2fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "header header"
+      "displaying game"
+      "footer footer";
+      height: 100vh;
+      background-color: antiquewhite;
+  }
+  
+  .header { grid-area: header; }
+  
+  .displaying {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "one"
+      "two"
+      "three"
+      "four"
+      "five"
+      "six"
+      "seven"
+      "eight"
+      "nine"
+      "ten";
+    grid-area: displaying;
+    background-color: rgb(199, 157, 103);
+  }
+  
+  .one { grid-area: one; }
+  
+  .two { grid-area: two; background-color: rgb(156, 125, 81);}
+  
+  .three { grid-area: three; }
+  
+  .four { grid-area: four; background-color: rgb(156, 125, 81); }
+  
+  .five { grid-area: five;  }
+  
+  .six { grid-area: six; background-color: rgb(156, 125, 81); }
+  
+  .seven { grid-area: seven; }
+  
+  .eight { grid-area: eight; background-color: rgb(156, 125, 81); }
+  
+  .nine { grid-area: nine; }
+  
+  .ten { grid-area: ten; background-color: rgb(156, 125, 81); }
+  
+.game {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2.3fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "rone"
+      "rtwo"
+      "rthree"
+      "rfour"
+      "rfive"
+      "rsix";
+    grid-area: game;
+    background-color: rgb(199, 157, 103);
+}
+  
+.rone { grid-area: rone;
+    background-color: rgb(98, 84, 64);
+}
+  
+.rtwo { grid-area: rtwo;
+    
+}
+  
+  .rthree { grid-area: rthree; background-color: rgb(156, 125, 81); }
+  
+  .rfour { grid-area: rfour; }
+  
+  .rfive { grid-area: rfive; background-color: rgb(156, 125, 81); }
+  
+  .rsix { grid-area: rsix; }
+  
+  .footer { grid-area: footer; }
+
+ .mani{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+ }
