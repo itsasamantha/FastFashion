@@ -26,7 +26,7 @@ let PublUpCost = 20;
 let publUpTrack = document.getElementById("publUpTrack");
 let costuppb = document.getElementById("costuppb");
 
-let increaseamount = 20;
+let increaseamount = 2000000000;
 
 
 
@@ -34,13 +34,13 @@ function addMoney() {
     money += increaseamount;
     moneyTracker.innerText = "Money: $" + money;
 }
-function subtractMoney(decreaseeAmount ) {
+function subtractMoney(decreaseeAmount) {
     money = money - decreaseeAmount;
     moneyTracker.innerText = "Money: $" + money;
 }
 function addEmployee(){
     if(money >= employCost){
-        if(employnum >= warenum*3){
+        if(employnum >= (warenum*3)){
             alert("You can't hire more employees you dont have enough space.")
         }else{
             subtractMoney(employCost);
@@ -58,21 +58,42 @@ function addWarehouse(){
     if(money>= wareCost){
         if(warenum >= 10){
             alert("There is no more space to expand :(")
+            costware.innerText = "Cost = You don't have space.";
         }else{
             subtractMoney(wareCost);
             warenum++; 
             wareCost *= 3; 
             wareTrack.innerText = warenum;
             costware.innerText = "Cost = " + wareCost;
-        }
+        } 
     }
 }
 function addPublicist(){
-
+    if(money>= publCost){
+        subtractMoney(publCost);
+        publnum++;
+        publCost += 24;
+        costpubl.innerText = "Cost = " + publCost;
+        publTrack.innerText = publnum;
+    }
 }
 function upEmployee(){
-
+    if(money >= employUpCost){
+        if(employnum >= 1){
+            subtractMoney(employUpCost);
+            employUpNum++;
+            employUpCost *=2;
+            costupem.innerText = "Cost = " + employUpCost;
+            employUpTrack.innerText = employUpNum
+        }else if(employUpNum >= (employnum*3)){
+            alert("Your employees are fully upgraded")
+        }else{
+            alert("You need employees first")
+        }
+    }
 }
-function upPublicist(){
+function upPublicist(){}
 
+function gameloop(){
+    money = money + (2 * employnum);
 }
