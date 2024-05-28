@@ -26,7 +26,7 @@ let PublUpCost = 20;
 let publUpTrack = document.getElementById("publUpTrack");
 let costuppb = document.getElementById("costuppb");
 
-let increaseamount = 333333334;
+let increaseamount = 1;
 
 
 
