@@ -26,17 +26,17 @@ let PublUpCost = 20;
 let publUpTrack = document.getElementById("publUpTrack");
 let costuppb = document.getElementById("costuppb");
 
-let increaseamount = 2000000000;
+let increaseamount = 333333334;
 
 
 
 function addMoney() {
     money += increaseamount;
-    moneyTracker.innerText = "Money: $" + money;
+    moneyTracker.innerText = "Money: $" + money.toFixed(2); 
 }
 function subtractMoney(decreaseeAmount) {
     money = money - decreaseeAmount;
-    moneyTracker.innerText = "Money: $" + money;
+    moneyTracker.innerText = "Money: $" + money.toFixed(2);
 }
 function addEmployee(){
     if(money >= employCost){
@@ -45,9 +45,10 @@ function addEmployee(){
         }else{
             subtractMoney(employCost);
             employnum++;
-            employCost *= 2;
+            employCost += 12;
             employTrack.innerText = employnum;
             costempl.innerText = "Cost = " + employCost;
+            increaseamount++;
         }
     }
     else{
@@ -62,9 +63,10 @@ function addWarehouse(){
         }else{
             subtractMoney(wareCost);
             warenum++; 
-            wareCost *= 3; 
+            wareCost *= 2; 
             wareTrack.innerText = warenum;
             costware.innerText = "Cost = " + wareCost;
+            
         } 
     }
 }
@@ -84,16 +86,34 @@ function upEmployee(){
             employUpNum++;
             employUpCost *=2;
             costupem.innerText = "Cost = " + employUpCost;
-            employUpTrack.innerText = employUpNum
-        }else if(employUpNum >= (employnum*3)){
-            alert("Your employees are fully upgraded")
+            employUpTrack.innerText = employUpNum;
         }else{
             alert("You need employees first")
         }
     }
 }
-function upPublicist(){}
 
-function gameloop(){
-    money = money + (2 * employnum);
+function upPublicist(){
+    if(money >= PublUpCost){
+        if(publnum >= 1){
+            subtractMoney(PublUpCost);
+            publUpNum++;
+            PublUpCost *=2;
+            publUpTrack.innerText = publUpNum;
+            costuppb.innerText = "Cost = " + PublUpCost;
+            
+        }else{
+            alert("You need publicists first")
+        }
+    }
 }
+
+
+
+function gameLoop(){
+    money = money + (0.2 * publnum) + (0.3 * employUpNum) + (0.3 * publUpNum);
+    moneyTracker.innerText = "Money: $" + money.toFixed(2);
+
+}
+
+setInterval(gameLoop, 1000)
