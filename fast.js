@@ -1,4 +1,4 @@
-let money = 0;
+let money = 0.00;
 let moneyTracker = document.getElementById("moneyTracker");
 
 let employnum = 0;
@@ -26,7 +26,7 @@ let PublUpCost = 20;
 let publUpTrack = document.getElementById("publUpTrack");
 let costuppb = document.getElementById("costuppb");
 
-let increaseamount = 1;
+let increaseamount = 30;
 
 
 
@@ -39,15 +39,16 @@ function subtractMoney(decreaseeAmount) {
     moneyTracker.innerText = "Money: $" + money.toFixed(2);
 }
 function addEmployee(){
+    employCost = employCost + employnum ** 2;
     if(money >= employCost){
-        if(employnum >= (warenum*3)){
+        if(employnum >= (warenum * 4)){
             alert("You can't hire more employees you dont have enough space.")
         }else{
             subtractMoney(employCost);
             employnum++;
-            employCost += 12;
+            employCost = employCost + employnum**2;
             employTrack.innerText = employnum;
-            costempl.innerText = "Cost = " + employCost;
+            costempl.innerText = "Cost = " + employCost.toFixed(0);
             increaseamount++;
         }
     }
@@ -57,9 +58,9 @@ function addEmployee(){
 }
 function addWarehouse(){
     if(money>= wareCost){
-        if(warenum >= 10){
+        if(warenum >= 20){
             alert("There is no more space to expand :(")
-            costware.innerText = "Cost = You don't have space.";
+            costware.innerText = "You don't have space.";
         }else{
             subtractMoney(wareCost);
             warenum++; 
@@ -68,15 +69,19 @@ function addWarehouse(){
             costware.innerText = "Cost = " + wareCost;
             
         } 
+    }else{
+        alert("You don't have the funds to buy open a new warehouse")
     }
 }
 function addPublicist(){
-    if(money>= publCost){
+    if(money >= publCost){
         subtractMoney(publCost);
         publnum++;
         publCost += 24;
         costpubl.innerText = "Cost = " + publCost;
         publTrack.innerText = publnum;
+    }else{
+        alert("You don't have the funds to buy-- hire people.")
     }
 }
 function upEmployee(){
@@ -90,6 +95,8 @@ function upEmployee(){
         }else{
             alert("You need employees first")
         }
+    }else{
+        alert("You don't have the funds to upgrade your employee")
     }
 }
 
@@ -105,14 +112,45 @@ function upPublicist(){
         }else{
             alert("You need publicists first")
         }
+    }else{
+        alert("You don't have the funds to upgrade your publicists.")
     }
 }
 
 
 
 function gameLoop(){
-    money = money + (0.2 * publnum) + (0.3 * employUpNum) + (0.3 * publUpNum);
+    money = money + (0.2 * publnum) + (0.4 * employUpNum) + (0.4 * publUpNum);
     moneyTracker.innerText = "Money: $" + money.toFixed(2);
+    if(money < employCost){
+        document.getElementById("hireE").disabled = true;
+    }else{
+        document.getElementById("hireE").disabled = false;
+    }
+
+    if(money < wareCost){
+        document.getElementById("addW").disabled = true;
+    }else{
+        document.getElementById("addW").disabled = false;
+    }
+
+    if(money < publCost){
+        document.getElementById("hireP").disabled = true;
+    }else{
+        document.getElementById("hireP").disabled = false;
+    }
+
+    if(money < employUpCost){
+        document.getElementById("upgradeE").disabled = true;
+    }else{
+        document.getElementById("upgradeE").disabled = false;
+    }
+
+    if(money < PublUpCost){
+        document.getElementById("upgradeP").disabled = true;
+    }else{
+        document.getElementById("upgradeP").disabled = false;
+    }
 
 }
 
