@@ -1,3 +1,12 @@
+let bgMusic = new Howl({
+    src:["townMusic.mp3"],
+    autoplay: true,
+    volume: .15,
+    loop: true
+})
+
+
+
 let money = 0.00;
 let moneyTracker = document.getElementById("moneyTracker");
 
@@ -52,9 +61,7 @@ function addEmployee(){
             increaseamount++;
         }
     }
-    else{
-        alert("You don't have the funds to buy-- hire people.")
-    }
+
 }
 function addWarehouse(){
     if(money>= wareCost){
@@ -69,8 +76,6 @@ function addWarehouse(){
             costware.innerText = "Cost = " + wareCost;
             
         } 
-    }else{
-        alert("You don't have the funds to buy open a new warehouse")
     }
 }
 function addPublicist(){
@@ -80,8 +85,6 @@ function addPublicist(){
         publCost += 24;
         costpubl.innerText = "Cost = " + publCost;
         publTrack.innerText = publnum;
-    }else{
-        alert("You don't have the funds to buy-- hire people.")
     }
 }
 function upEmployee(){
@@ -95,8 +98,6 @@ function upEmployee(){
         }else{
             alert("You need employees first")
         }
-    }else{
-        alert("You don't have the funds to upgrade your employee")
     }
 }
 
@@ -112,8 +113,6 @@ function upPublicist(){
         }else{
             alert("You need publicists first")
         }
-    }else{
-        alert("You don't have the funds to upgrade your publicists.")
     }
 }
 
