@@ -1,10 +1,14 @@
 let bgMusic = new Howl({
-    src:["townMusic.mp3"],
+    src:["music/townMusic.mp3"],
     autoplay: true,
-    volume: .15,
+    volume: .40,
     loop: true
 })
 
+let buySound = new Howl({
+    src:["music/purchase.wav"],
+    volume: .1,
+})
 
 
 let money = 0.00;
@@ -35,9 +39,22 @@ let PublUpCost = 20;
 let publUpTrack = document.getElementById("publUpTrack");
 let costuppb = document.getElementById("costuppb");
 
-let increaseamount = 30;
+let increaseamount = 1;
 
+let soundPlaying = true;
+let img = document.getElementById("sound");
 
+function soundBtn(){
+    if(soundPlaying == true){
+        bgMusic.pause();
+        img.src ="images/pauseSound.png";
+        soundPlaying = false;
+    }else{
+        bgMusic.play();
+        img.src ="images/playSound.png";
+        soundPlaying = true;
+    }
+}
 
 function addMoney() {
     money += increaseamount;
@@ -46,6 +63,7 @@ function addMoney() {
 function subtractMoney(decreaseeAmount) {
     money = money - decreaseeAmount;
     moneyTracker.innerText = "Money: $" + money.toFixed(2);
+    buySound.play()
 }
 function addEmployee(){
     employCost = employCost + employnum ** 2;
@@ -146,6 +164,11 @@ function gameLoop(){
     }
 
     if(money < PublUpCost){
+        document.getElementById("upgradeP").disabled = true;
+    }else{
+        document.getElementById("upgradeP").disabled = false;
+    }
+    if(employnum < 1){
         document.getElementById("upgradeP").disabled = true;
     }else{
         document.getElementById("upgradeP").disabled = false;
