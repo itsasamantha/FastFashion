@@ -69,7 +69,7 @@ function addEmployee(){
     employCost = employCost + employnum ** 2;
     if(money >= employCost){
         if(employnum >= (warenum * 4)){
-            alert("You can't hire more employees you dont have enough space.")
+            alert("You can't hire more employees you dont have enough space....Mabye you should open another ware house.")
         }else{
             subtractMoney(employCost);
             employnum++;
@@ -84,7 +84,7 @@ function addEmployee(){
 function addWarehouse(){
     if(money>= wareCost){
         if(warenum >= 20){
-            alert("There is no more space to expand :(")
+            alert("There is no more space to expand :( sorry.....")
             costware.innerText = "You don't have space.";
         }else{
             subtractMoney(wareCost);
@@ -114,7 +114,7 @@ function upEmployee(){
             costupem.innerText = "Cost = " + employUpCost;
             employUpTrack.innerText = employUpNum;
         }else{
-            alert("You need employees first")
+            alert("You need employees first.......0 times 0 is still 0.")
         }
     }
 }
